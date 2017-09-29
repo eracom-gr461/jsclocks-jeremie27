@@ -1,19 +1,109 @@
-<!doctype html>
-<html class="no-js" lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>The JS Clocks</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/style.css">
-        <script src="js/clocks.js"></script>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style_Rap.css">
+		<link rel="stylesheet" href="skeleton.css">
 
-        <h1>Salut, je suis un titre</h1>
-        <p>Ciao, je suis un paragraphe</p>
+		<title>mon site</title>
 
-        <time class="temps" id="horloge">00:00:00</time>
 
-    </body>
+
+	</head>
+
+
+		</div><!--end #page-->
+	</body>
+	<!doctype html>
+	<html lang="fr">
+	    <head>
+	        <meta charset="utf-8">
+	        <title>The JS Clocks</title>
+	        <meta name="viewport" content="width=device-width, initial-scale=1">
+	        <style>
+
+	        	body {
+	        	  margin: 0;
+	        	}
+
+	        	html {
+	        		font-family: monospace;
+	        		font-size: 500%;
+	        	}
+
+	        	time {
+	        		/*position: absolute;*/
+							width: 90vmin;
+							height: 90vmin;
+							border: 1px solid black;
+							background: #fff;
+							display: block;
+							position: relative;
+
+							display: grid;
+  						grid-gap: 2px;
+  						grid-template-columns: repeat(8, 1fr);
+  						grid-template-rows: repeat(8, 1fr);
+	        	}
+
+						.sec {
+							position: relative;
+							background-color: red;
+							border: 0px solid #fff;
+							width: 100%;
+							height: 100%;
+						}
+
+	      </style>
+	    </head>
+	    <body>
+
+			<!-- <time id="heure"></time>
+			<time id="minute"></time> -->
+			<time id="seconde"></time>
+
+	    </body>
+		<script>
+
+		// création d'objets secondes
+
+		var i; // i = convention, pour "integer" (nombre entier)
+			for (i = 0; i < 61; i++) {
+
+				var box = document.createElement('div');
+        box.className = "sec";
+				box.id = "sec";
+				box.id = 'sec'+i;
+
+        document.getElementById("seconde").appendChild(box);
+			}
+
+
+		// Initialiser l'affichage au chargement:
+		metronome();
+
+		// Répéter la fonction metronome une fois par seconde
+		var monIntervalle = setInterval(function() {
+		  metronome();
+	  }, 1000); // mille millisecondes = 1 seconde
+		// Notre fonction random:
+
+
+
+		function metronome() {
+		  var date = new Date;
+			var minute = date.getMinutes();
+			var seconde = date.getSeconds();
+		  // document.getElementById("seconde").innerHTML = seconde;
+			// document.getElementById("seconde").style.top = getRandom(10, 90)+'%';
+	  	// document.getElementById("seconde").style.left = getRandom(10, 90)+'%';
+		  // test conditionnel
+		  if ( seconde == 0 ) {
+			  metronomeMinute();
+		  }
+
+		}
+		</script>
+
+
 </html>
