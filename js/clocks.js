@@ -1,10 +1,13 @@
 
 /*
  * Un petit script mesurant l'écoulement du temps
- * 
+ *
  * Source: https://codepen.io/Tcip/pen/BNKjeN
  * Auteur: Mikael Elmblad, tcip.se
 */
+
+// afficher un cube-montre.
+alert("hello world");
 
 // répéter la fonction metronone une fois par seconde
 
@@ -19,7 +22,7 @@ function metronome() {
   // voir documentation: https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date
 
   var d = new Date();
-  
+
   // 2: on affiche l'heure dans notre objet "horloge"
 
   document.getElementById("horloge").innerHTML = d.toLocaleTimeString();
