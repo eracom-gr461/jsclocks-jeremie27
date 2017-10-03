@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="style_Rap.css">
-		<link rel="stylesheet" href="skeleton.css">
-
-		<title>mon site</title>
-
-
-
-	</head>
-
-
-		</div><!--end #page-->
-	</body>
-	<!doctype html>
+<!doctype html>
 	<html lang="fr">
 	    <head>
 	        <meta charset="utf-8">
 	        <title>The JS Clocks</title>
+					<link rel="stylesheet" href="css/normalize.css">
 	        <meta name="viewport" content="width=device-width, initial-scale=1">
 	        <style>
 
@@ -29,17 +14,20 @@
 	        	html {
 	        		font-family: monospace;
 	        		font-size: 500%;
+							background-color: #000
 	        	}
 
 	        	time {
 	        		/*position: absolute;*/
-							width: 90vmin;
-							height: 90vmin;
-							border: 1px solid black;
+							width: 70vmin;
+							height: 70vmin;
+							border: 1px solid #fff;
 							background: #fff;
 							display: block;
 							position: relative;
-
+							top: 15vmin;
+							left: 50vw;
+							transform: translateX(-75%) skewY(30deg) scaleX(0.5);
 							display: grid;
   						grid-gap: 2px;
   						grid-template-columns: repeat(8, 1fr);
@@ -48,10 +36,22 @@
 
 						.sec {
 							position: relative;
-							background-color: red;
+							background-color: black;
 							border: 0px solid #fff;
 							width: 100%;
 							height: 100%;
+						}
+
+						/* la dernière seconde doit couvrir 4 champs */
+						#sec59 {
+							grid-column: 7 / 9;
+  						grid-row: 7 / 9;
+						}
+
+						/* avant-dernière seconde */
+						#sec58 {
+							grid-column: 5 / 7;
+							grid-row: 8 / 9;
 						}
 
 	      </style>
@@ -68,7 +68,7 @@
 		// création d'objets secondes
 
 		var i; // i = convention, pour "integer" (nombre entier)
-			for (i = 0; i < 61; i++) {
+			for (i = 0; i < 60; i++) {
 
 				var box = document.createElement('div');
         box.className = "sec";
@@ -86,24 +86,28 @@
 		var monIntervalle = setInterval(function() {
 		  metronome();
 	  }, 1000); // mille millisecondes = 1 seconde
-		// Notre fonction random:
-
-
 
 		function metronome() {
 		  var date = new Date;
 			var minute = date.getMinutes();
 			var seconde = date.getSeconds();
-		  // document.getElementById("seconde").innerHTML = seconde;
-			// document.getElementById("seconde").style.top = getRandom(10, 90)+'%';
-	  	// document.getElementById("seconde").style.left = getRandom(10, 90)+'%';
+
+			// coloriser élément actif en rouge
+
+		document.getElementById("sec"+seconde).style.backgroundColor = "red";
+
 		  // test conditionnel
 		  if ( seconde == 0 ) {
-			  metronomeMinute();
-		  }
+			  // recoloriser tout en noir! (sauf le premier)
+				console.log("all black!");
+				var ToutesLesSecondes = document.querySelectorAll(".sec");
+				var i;
+				for (i = 1; i < ToutesLesSecondes.length; i++) {
+    			ToutesLesSecondes[i].style.backgroundColor = "black";
+				} // for
+		  } // if
+		} // fonction metronome()
 
-		}
 		</script>
-
 
 </html>
